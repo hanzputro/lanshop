@@ -1,0 +1,108 @@
+﻿
+//delay animation
+@mixin delay($timedelay:.3s){
+  -o-transition:$timedelay;
+  -ms-transition:$timedelay;
+  -moz-transition:$timedelay;
+  -webkit-transition:$timedelay;
+  transition:$timedelay;
+}
+
+//box shadow
+@mixin boxshadow( $bs1:0px, $bs2:0px, $bs3:0px, $bs4:0px, $bgbs:#777) {
+  -webkit-box-shadow: $bs1 $bs2 $bs3 $bs4 $bgbs;
+     -moz-box-shadow: $bs1 $bs2 $bs3 $bs4 $bgbs;
+          box-shadow: $bs1 $bs2 $bs3 $bs4 $bgbs;
+}
+
+// button style 1
+@mixin btn-style ($btnstylepadding:20px 0px, $btnstylefontsize:18px) {
+	border: none;
+	font-family: calibri;
+	font-size: $btnstylefontsize;
+	background: none;
+	cursor: pointer;
+	width:100%;
+	padding:$btnstylepadding;
+	text-align:center;
+	display: inline-block;
+	margin:0;
+	text-transform: uppercase;
+	letter-spacing: 4px;
+	font-weight: 700;
+	outline: none;
+	position: relative;
+	@include delay();
+	&:after{
+		content: '';
+		position: absolute;
+		z-index: -1;
+		-webkit-transition: all 0.3s;
+		-moz-transition: all 0.3s;
+		transition: all 0.3s;
+	}
+}
+
+// Button color
+@mixin btn-color ($btnbgcolor:#F83457, $btntextcolor:#000) {
+	background: $btnbgcolor;
+	color: $btntextcolor;
+	box-shadow: 0 6px #ab3c3c;
+	-webkit-transition: none;
+	-moz-transition: none;
+	transition: none;
+}
+
+// Button 2c
+@mixin btn-radius ($btnradius:5px, $btnshadow:#ab3c3c) {
+	border-radius: $btnradius;
+	&:hover {
+		box-shadow: 0 4px $btnshadow;
+		top: 2px;
+	}
+	&:active {
+		box-shadow: 0 0 $btnshadow;
+		top: 6px;
+    @include delay(0.1s);
+	}
+}
+
+// content list
+@mixin content-list  ($content-listpadding:10px 10px , $content-listmargin: 0px 0px){
+    background:#fff;
+    padding:$content-listpadding;
+    margin:$content-listmargin;
+        .list__gallery{
+            width: 60%;
+            float:left;
+            padding:0px 10px 10px 10px;
+                li{
+                    border:none;
+                }            
+        }
+        .list__content{
+            width:40%;
+            float:left;
+            padding:5px 10px 10px 10px;
+            	h3{
+                   	margin:0 0 10px 0;
+                 	padding:0;
+                }
+               	p{
+                   	font-size: 11px;
+                   	letter-spacing: normal;
+                  	font-family: calibri;
+                  	font-weight: normal;
+              	}
+               	.btn-beli{
+                   	@include btn-style();
+                   	@include btn-color($bgmerah, #fff);
+                	  @include btn-radius();
+                      .icon-sell{
+                        float:right;
+                        margin:0px 50px 0px 0px;
+
+                 		}                          
+              	}
+        }
+}
